@@ -30,14 +30,14 @@ class ProjectListViewModel(
         formatProjects(projects, application.resources)
     }
 
-//    private val _navigateToProjectForm = MutableLiveData<ProjectEntity>()
+    private val _navigateToProjectForm = MutableLiveData<ProjectEntity?>()
 
-//    val navigateToProjectForm: LiveData<ProjectEntity>
-//        get() = _navigateToProjectForm
+    val navigateToProjectForm: LiveData<ProjectEntity?>
+        get() = _navigateToProjectForm
 
-//    fun doneNavigating() {
-//        _navigateToProjectForm.value = null
-//    }
+    fun doneNavigating() {
+        _navigateToProjectForm.value = null
+    }
 
     fun onCreateNewProject() {
         uiScope.launch {
@@ -46,7 +46,7 @@ class ProjectListViewModel(
 
             insert(newProject)
 
-//            _navigateToProjectForm.value = newProject
+            _navigateToProjectForm.value = newProject
         }
     }
 

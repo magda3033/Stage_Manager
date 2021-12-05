@@ -4,10 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/activity_main_fragment.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_activity.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_blank.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_group_list.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_project_form.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_project_list.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/project_form_fragment.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>
