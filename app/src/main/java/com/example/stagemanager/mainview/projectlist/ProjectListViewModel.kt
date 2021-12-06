@@ -25,7 +25,7 @@ class ProjectListViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val projects = database.getAllProjects()
+    val projects = database.getAllProjects()
 
     val projectsString = Transformations.map(projects) { projects ->
         formatProjects(projects, application.resources)

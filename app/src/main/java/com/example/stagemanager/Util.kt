@@ -4,7 +4,9 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.TextView
 import androidx.core.text.HtmlCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.example.stagemanager.R
 import com.example.stagemanager.database.ProjectEntity
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="project"
+            type="com.example.stagemanager.database.ProjectEntity" />
+        <variable
+            name="clickListener"
+            type="com.example.stagemanager.mainview.projectlist.ProjectEntityListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/coinstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="24sp"
+        android:onClick="@{() -> clickListener.onClick(project) }">
+
+        <TextView
+            android:id="@+id/list_item_project_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/project_name"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/list_item_project_deadline"
+            app:layout_constraintStart_toEndOf="@+id/list_item_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:projectNameFormatted="@{project}"/>
+
+        <TextView
+            android:id="@+id/list_item_project_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deadline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/list_item_project_name"
+            app:projectDeadlineFormatted="@{project}"/>
+
+        <TextView
+            android:id="@+id/list_item_project_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/description"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/list_item_project_deadline"
+            app:layout_constraintStart_toStartOf="@+id/list_item_project_name"
+            app:layout_constraintTop_toBottomOf="@+id/list_item_project_name"
+            app:projectDescriptionFormatted="@{project}"/>
+
+        <ImageView
+            android:id="@+id/list_item_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_info_details" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
