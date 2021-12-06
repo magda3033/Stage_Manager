@@ -17,6 +17,10 @@ fun formatProjects(nights: List<ProjectEntity>, resources: Resources): Spanned {
             append("<br>")
             append(resources.getString(R.string.project_id))
             append("\t${it.projectId.toString()}<br>")
+            append("<b>Name:</b>")
+            append("\t${it.name}<br>")
+            append("<b>Music piece:</b>")
+            append("\t${it.songUsed}<br>")
         }
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

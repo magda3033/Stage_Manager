@@ -1,8 +1,11 @@
 package com.example.stagemanager.database
 
+import androidx.annotation.Nullable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.time.LocalDate
+import java.util.*
 
 @Entity(tableName = "project_table")
 class ProjectEntity(
@@ -13,6 +16,12 @@ class ProjectEntity(
     var name: String = "",
 
     @ColumnInfo(name = "song_used")
-    var songUsed: String = ""
+    var songUsed: String = "",
+
+    @ColumnInfo(name = "description")
+    var description: String = "",
+
+    @ColumnInfo(name = "deadline")
+    var deadline: String = ""
 ) {
 }

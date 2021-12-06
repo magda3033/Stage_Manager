@@ -1,6 +1,7 @@
 package com.example.stagemanager.mainview.projectlist
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -46,8 +47,16 @@ class ProjectListViewModel(
 
             insert(newProject)
 
-            _navigateToProjectForm.value = newProject
+            _navigateToProjectForm.value = getNewestFromDatabase()
         }
+    }
+
+    private suspend fun getNewestFromDatabase(): ProjectEntity? {
+        val newest: ProjectEntity
+        withContext(Dispatchers.IO) {
+            newest = database.getNewest()!!
+        }
+        return newest
     }
 
     private suspend fun insert(project: ProjectEntity) {
@@ -65,6 +74,18 @@ class ProjectListViewModel(
     private suspend fun clear() {
         withContext(Dispatchers.IO) {
             database.clear()
+        }
+    }
+
+    fun onDelete(project: ProjectEntity) {
+        uiScope.launch {
+            delete(project)
+        }
+    }
+
+    private suspend fun delete(project: ProjectEntity) {
+        withContext(Dispatchers.IO) {
+            database.deleteProject(project)
         }
     }
 }
