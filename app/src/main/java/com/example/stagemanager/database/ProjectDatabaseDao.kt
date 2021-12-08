@@ -15,6 +15,9 @@ interface ProjectDatabaseDao {
     @Query("SELECT * FROM project_table WHERE projectId = :key")
     fun get(key: Long): ProjectEntity?
 
+    @Query("SELECT * from project_table WHERE projectId = :key")
+    fun getProjectWithId(key: Long): LiveData<ProjectEntity>
+
     @Query("SELECT * FROM project_table ORDER BY projectId DESC LIMIT 1")
     fun getNewest(): ProjectEntity?
 

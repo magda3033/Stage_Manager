@@ -37,9 +37,19 @@ class ProjectListFragment : Fragment() {
         binding.projectListViewModel = projectListViewModel
 
         val adapter = ProjectEntityAdapter(ProjectEntityListener {
-            projectId -> Toast.makeText(context, "Project: ${projectId}", Toast.LENGTH_LONG).show()
+            projectId ->
+            projectListViewModel.onProjectEntityClicked(projectId)
         })
         binding.projectList.adapter = adapter
+
+        projectListViewModel.navigateToProjectDetail.observe(viewLifecycleOwner, Observer {
+            project ->
+            project?.let{
+                this.findNavController().navigate(ActivityFragmentDirections
+                    .actionActivityFragmentToProjectDetailFragment(project))
+                projectListViewModel.onProjectEntityDetailNavigated()
+            }
+        })
 
         projectListViewModel.projects.observe(viewLifecycleOwner, Observer {
             it?.let {

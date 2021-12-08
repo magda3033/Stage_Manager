@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_activityFragment_to_projectFormFragment"
             app:destination="@id/projectFormFragment" />
+        <action
+            android:id="@+id/action_activityFragment_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/projectFormFragment"
@@ -25,5 +28,20 @@
         <argument
             android:name="projectId"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectDetailFragment"
+        android:name="com.example.stagemanager.projectdetail.ProjectDetailFragment"
+        android:label="fragment_project_detail"
+        tools:layout="@layout/fragment_project_detail" >
+        <argument
+            android:name="projectEntityId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_projectDetailFragment_to_activityFragment"
+            app:destination="@id/activityFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/sleep_tracker_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

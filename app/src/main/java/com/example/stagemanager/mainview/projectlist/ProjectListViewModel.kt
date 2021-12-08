@@ -18,11 +18,6 @@ class ProjectListViewModel(
 
     private var viewModelJob = Job()
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
-
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     val projects = database.getAllProjects()
@@ -35,6 +30,25 @@ class ProjectListViewModel(
 
     val navigateToProjectForm: LiveData<ProjectEntity?>
         get() = _navigateToProjectForm
+
+    private val _navigateToProjectDetail = MutableLiveData<Long?>()
+
+    val navigateToProjectDetail
+        get() = _navigateToProjectDetail
+
+    fun onProjectEntityClicked(id: Long) {
+        _navigateToProjectDetail.value = id
+    }
+
+    fun onProjectEntityDetailNavigated() {
+        _navigateToProjectDetail.value = null
+    }
+
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 
     fun doneNavigating() {
         _navigateToProjectForm.value = null
