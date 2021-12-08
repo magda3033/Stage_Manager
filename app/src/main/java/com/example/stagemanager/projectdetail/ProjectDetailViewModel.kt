@@ -1,6 +1,7 @@
 package com.example.stagemanager.projectdetail
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,7 +18,6 @@ class ProjectDetailViewModel(
 
     private val project = MediatorLiveData<ProjectEntity>()
 
-
     fun getProject() = project
 
     init {
@@ -30,11 +30,22 @@ class ProjectDetailViewModel(
     val navigateToProjectList: LiveData<Boolean?>
         get() = _navigateToProjectList
 
+    private val _navigateToProjectForm = MutableLiveData<Boolean?>()
+
+    val navigateToProjectForm: LiveData<Boolean?>
+        get() = _navigateToProjectForm
+
     fun doneNavigating() {
         _navigateToProjectList.value = null
+        _navigateToProjectForm.value = null
     }
 
     fun onClose() {
         _navigateToProjectList.value = true
+    }
+
+    fun onEditProject() {
+        Log.i("ProjectDetailViewModel", "Editing project!")
+        _navigateToProjectForm.value = true
     }
 }

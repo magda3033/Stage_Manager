@@ -42,7 +42,7 @@ class ProjectFormFragment : Fragment() {
 
         val dataSource = ProjectDatabase.getInstance(application).projectDatabaseDao
 
-        val viewModelFactory = ProjectFormViewModelFactory(arguments.projectId, dataSource)
+        val viewModelFactory = ProjectFormViewModelFactory(arguments.projectId, arguments.deleteAfter, arguments.navigatedFrom, dataSource)
 
         val projectFormViewModel =
             ViewModelProvider(
@@ -62,11 +62,25 @@ class ProjectFormFragment : Fragment() {
             }
         })
 
+        projectFormViewModel.navigateToProjectDetail.observe(viewLifecycleOwner, Observer {
+            if (it==true) {
+                this.findNavController().navigate(
+                    ProjectFormFragmentDirections.actionProjectFormFragmentToProjectDetailFragment(
+                        arguments.projectId))
+                projectFormViewModel.doneNavigating()
+                Log.i("ProjectFormFragment", "Done navigating to project details")
+            }
+        })
+
         binding.inputDeadline.setOnDateChangeListener {
                 view, year, month, day ->
             var date = LocalDate.of(year, month + 1, day)
             projectFormViewModel.deadline.value = date
         }
+//
+//        if (projectFormViewModel.navigatedFrom == 1) {
+//            projectFormViewModel.setTextBoxData()
+//        }
 
         return binding.root
     }
