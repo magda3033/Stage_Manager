@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,9 +19,11 @@ import com.example.stagemanager.form.projectform.ProjectFormFragmentDirections
 import com.example.stagemanager.form.projectform.ProjectFormViewModel
 
 
-class ProjectDetailFragment : Fragment() {
+class ProjectDetailFragment(val projectKey: Long) : Fragment() {
 
     private lateinit var viewModel: ProjectDetailViewModel
+
+//    var projectKey: Long? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,14 +32,13 @@ class ProjectDetailFragment : Fragment() {
         val binding: FragmentProjectDetailBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_project_detail, container, false)
 
-        setHasOptionsMenu(true)
-
         val application = requireNotNull(this.activity).application
-        val arguments: ProjectDetailFragmentArgs by navArgs()
+//        val arguments: ProjectDetailFragmentArgs by navArgs()
+
 
         // Create an instance of the ViewModel Factory.
         val dataSource = ProjectDatabase.getInstance(application).projectDatabaseDao
-        val viewModelFactory = ProjectDetailViewModelFactory(arguments.projectEntityId, dataSource)
+        val viewModelFactory = ProjectDetailViewModelFactory(projectKey!!, dataSource)
 
         val projectDetailViewModel =
             ViewModelProvider(
@@ -49,22 +51,20 @@ class ProjectDetailFragment : Fragment() {
         projectDetailViewModel.navigateToProjectList.observe(viewLifecycleOwner, Observer {
             if (it == true) { // Observed state is true.
                 this.findNavController().navigate(
-                    ProjectDetailFragmentDirections.actionProjectDetailFragmentToActivityFragment())
+                    ProjectInfoTabsFragmentDirections.actionProjectInfoTabsFragmentToActivityFragment())
             projectDetailViewModel.doneNavigating()
             }
         })
 
-        projectDetailViewModel.navigateToProjectForm.observe(this, Observer {
+        projectDetailViewModel.navigateToProjectForm.observe(viewLifecycleOwner, Observer {
             if (it==true) {
                 this.findNavController().navigate(
-                    ProjectDetailFragmentDirections.actionProjectDetailFragmentToProjectFormFragment(
+                    ProjectInfoTabsFragmentDirections.actionProjectInfoTabsFragmentToProjectFormFragment(
                         projectDetailViewModel.getProject().value!!.projectId))
                 projectDetailViewModel.doneNavigating()
                 Log.i("ProjectFormFragment", "Done navigating to form")
             }
         })
-
-
 
         setActivityTitle()
 
@@ -76,18 +76,6 @@ class ProjectDetailFragment : Fragment() {
     private fun Fragment.setActivityTitle()
     {
         (activity as AppCompatActivity?)!!.supportActionBar?.title = "Project Details"
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.project_edit_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.edit -> viewModel.onEditProject()
-        }
-        return super.onOptionsItemSelected(item)
     }
 
 }

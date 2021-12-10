@@ -8,7 +8,7 @@ import java.time.LocalDate
 import java.util.*
 
 @Entity(tableName = "project_table")
-class ProjectEntity(
+data class ProjectEntity(
     @PrimaryKey(autoGenerate = true)
     var projectId: Long = 0L,
 

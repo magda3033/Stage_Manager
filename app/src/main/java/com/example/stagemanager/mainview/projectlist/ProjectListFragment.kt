@@ -46,7 +46,7 @@ class ProjectListFragment : Fragment() {
             project ->
             project?.let{
                 this.findNavController().navigate(ActivityFragmentDirections
-                    .actionActivityFragmentToProjectDetailFragment(project))
+                    .actionActivityFragmentToProjectInfoTabsFragment(project))
                 projectListViewModel.onProjectEntityDetailNavigated()
             }
         })

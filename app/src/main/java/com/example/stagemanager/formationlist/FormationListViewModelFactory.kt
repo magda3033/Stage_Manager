@@ -1,20 +1,19 @@
-package com.example.stagemanager.mainview.projectlist
+package com.example.stagemanager.formationlist
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.stagemanager.database.ProjectDatabaseDao
-
-
 import java.lang.IllegalArgumentException
 
-class ProjectListViewModelFactory(
+class FormationListViewModelFactory(
     private val dataSource: ProjectDatabaseDao,
     private val application: Application,
-) : ViewModelProvider.Factory {
+    private val projectKey: Long
+    ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProjectListViewModel::class.java)) {
-            return ProjectListViewModel(dataSource, application) as T
+        if (modelClass.isAssignableFrom(FormationListViewModel::class.java)) {
+            return FormationListViewModel(dataSource, application, projectKey) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

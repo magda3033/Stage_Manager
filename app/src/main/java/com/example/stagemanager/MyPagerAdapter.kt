@@ -23,14 +23,4 @@ class MyPagerAdapter(activity: FragmentActivity?) : FragmentStateAdapter(activit
     override fun createFragment(position: Int): Fragment {
         return mFragmentList[position]
     }
-//    override fun createFragment(position: Int): Fragment {
-//        return when (position) {
-//            0 -> ProjectListFragment()
-//            else -> GroupListFragment()
-//        }
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return 2
-//    }
 }

@@ -34,7 +34,7 @@ class ProjectFormFragment : Fragment() {
             inflater, R.layout.fragment_project_form, container, false
         )
 
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
 
         val application = requireNotNull(this.activity).application
 
@@ -65,7 +65,7 @@ class ProjectFormFragment : Fragment() {
         projectFormViewModel.navigateToProjectDetail.observe(viewLifecycleOwner, Observer {
             if (it==true) {
                 this.findNavController().navigate(
-                    ProjectFormFragmentDirections.actionProjectFormFragmentToProjectDetailFragment(
+                    ProjectFormFragmentDirections.actionProjectFormFragmentToProjectInfoTabsFragment(
                         arguments.projectId))
                 projectFormViewModel.doneNavigating()
                 Log.i("ProjectFormFragment", "Done navigating to project details")
@@ -85,15 +85,15 @@ class ProjectFormFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.project_save_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.save -> viewModel.onSaveProject()
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.project_save_menu, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.save -> viewModel.onSaveProject()
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 }

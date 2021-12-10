@@ -32,4 +32,25 @@ interface ProjectDatabaseDao {
 
     @Query("SELECT * FROM project_table ORDER BY projectId DESC")
     fun getAllProjects(): LiveData<List<ProjectEntity>>
+
+    @Insert
+    fun insert(formation: FormationEntity)
+
+    @Update
+    fun update(formation: FormationEntity)
+
+    @Query("SELECT * FROM formation_table ORDER BY formationId DESC")
+    fun getAllFormations(): LiveData<List<FormationEntity>>
+
+    @Query("SELECT * FROM formation_table WHERE projectId = :projectKey ORDER BY projectId DESC")
+    fun getProjectFormations(projectKey: Long): LiveData<List<FormationEntity>>
+
+    @Query("SELECT * FROM formation_table WHERE formationId = :key")
+    fun getFormationEntity(key: Long): FormationEntity?
+
+    @Query("SELECT * from formation_table WHERE formationId = :key")
+    fun getFormation(key: Long): LiveData<FormationEntity>
+
+    @Query("DELETE FROM formation_table")
+    fun clearFormations()
 }

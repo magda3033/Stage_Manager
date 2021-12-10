@@ -19,8 +19,8 @@
                 android:defaultValue="0" />
         </action>
         <action
-            android:id="@+id/action_activityFragment_to_projectDetailFragment"
-            app:destination="@id/projectDetailFragment" />
+            android:id="@+id/action_activityFragment_to_projectInfoTabsFragment"
+            app:destination="@id/projectInfoTabsFragment" />
     </fragment>
     <fragment
         android:id="@+id/projectFormFragment"
@@ -36,10 +36,10 @@
             android:name="projectId"
             app:argType="long" />
         <action
-            android:id="@+id/action_projectFormFragment_to_projectDetailFragment"
-            app:destination="@id/projectDetailFragment"
+            android:id="@+id/action_projectFormFragment_to_projectInfoTabsFragment"
+            app:destination="@id/projectInfoTabsFragment"
             app:launchSingleTop="false"
-            app:popUpTo="@id/projectDetailFragment"
+            app:popUpTo="@id/projectInfoTabsFragment"
             app:popUpToInclusive="true"/>
         <argument
             android:name="deleteAfter"
@@ -51,21 +51,21 @@
             android:defaultValue="0" />
     </fragment>
     <fragment
-        android:id="@+id/projectDetailFragment"
-        android:name="com.example.stagemanager.projectdetail.ProjectDetailFragment"
-        android:label="fragment_project_detail"
-        tools:layout="@layout/fragment_project_detail" >
+        android:id="@+id/projectInfoTabsFragment"
+        android:name="com.example.stagemanager.projectdetail.ProjectInfoTabsFragment"
+        android:label="ProjectInfoTabsFragment"
+        tools:layout="@layout/fragment_project_info_tabs">
         <argument
             android:name="projectEntityId"
             app:argType="long" />
         <action
-            android:id="@+id/action_projectDetailFragment_to_activityFragment"
+            android:id="@+id/action_projectInfoTabsFragment_to_activityFragment"
             app:destination="@id/activityFragment"
             app:launchSingleTop="false"
-            app:popUpTo="@+id/sleep_tracker_fragment"
+            app:popUpTo="@+id/activityFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_projectDetailFragment_to_projectFormFragment"
+            android:id="@+id/action_projectInfoTabsFragment_to_projectFormFragment"
             app:destination="@id/projectFormFragment" >
             <argument
                 android:name="deleteAfter"
@@ -74,5 +74,6 @@
                 android:name="navigatedFrom"
                 android:defaultValue="1" />
         </action>
+
     </fragment>
 </navigation>
