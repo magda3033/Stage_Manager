@@ -1,6 +1,5 @@
 package com.example.stagemanager.projectdetail
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,13 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.stagehelper.MyPagerAdapter
-import com.example.stagemanager.BlankFragment
 import com.example.stagemanager.R
-import com.example.stagemanager.databinding.FragmentActivityMainBinding
 import com.example.stagemanager.databinding.FragmentProjectInfoTabsBinding
 import com.example.stagemanager.formationlist.FormationListFragment
-import com.example.stagemanager.mainview.grouplist.GroupListFragment
-import com.example.stagemanager.mainview.projectlist.ProjectListFragment
+import com.example.stagemanager.projectnotes.ProjectNotesFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -44,9 +40,11 @@ class ProjectInfoTabsFragment : Fragment() {
         val projectDetailFragment = ProjectDetailFragment(arguments.projectEntityId)
 //        projectDetailFragment.projectKey = arguments.projectEntityId
         val formationListFragment = FormationListFragment(arguments.projectEntityId)
+        val projectNotesFragment = ProjectNotesFragment(arguments.projectEntityId)
 
         adapter.addFragment(projectDetailFragment, "Info")
         adapter.addFragment(formationListFragment, "Formations")
+        adapter.addFragment(projectNotesFragment, "Notes")
         viewPager2.adapter = adapter
 
         TabLayoutMediator(

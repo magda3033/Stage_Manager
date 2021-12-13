@@ -74,6 +74,26 @@
                 android:name="navigatedFrom"
                 android:defaultValue="1" />
         </action>
+        <action
+            android:id="@+id/action_projectInfoTabsFragment_to_formationFormFragment"
+            app:destination="@id/formationFormFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/formationFormFragment"
+        android:name="com.example.stagemanager.form.formationform.FormationFormFragment"
+        android:label="FormationFormFragment" >
+        <action
+            android:id="@+id/action_formationFormFragment_to_projectInfoTabsFragment"
+            app:destination="@id/projectInfoTabsFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/projectInfoTabsFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="formationId"
+            app:argType="long" />
+        <argument
+            android:name="projectId"
+            app:argType="long" />
     </fragment>
 </navigation>

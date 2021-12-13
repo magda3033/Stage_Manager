@@ -33,7 +33,7 @@ class ActivityFragment : Fragment() {
 
         val adapter : MyPagerAdapter = MyPagerAdapter(activity)
         adapter.addFragment(ProjectListFragment(), "Projects")
-        adapter.addFragment(GroupListFragment(), "Groups")
+//        adapter.addFragment(GroupListFragment(), "Groups")
         viewPager2.adapter = adapter
 
         TabLayoutMediator(

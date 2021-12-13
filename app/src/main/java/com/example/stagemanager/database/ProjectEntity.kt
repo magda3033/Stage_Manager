@@ -22,6 +22,9 @@ data class ProjectEntity(
     var description: String = "",
 
     @ColumnInfo(name = "deadline")
-    var deadline: String = ""
+    var deadline: String = "",
+
+    @ColumnInfo(name = "notes")
+    var notes: String = ""
 ) {
 }

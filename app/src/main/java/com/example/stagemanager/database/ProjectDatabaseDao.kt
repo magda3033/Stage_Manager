@@ -39,6 +39,12 @@ interface ProjectDatabaseDao {
     @Update
     fun update(formation: FormationEntity)
 
+    @Insert
+    fun insert(position: PositionEntity)
+
+    @Update
+    fun update(position: PositionEntity)
+
     @Query("SELECT * FROM formation_table ORDER BY formationId DESC")
     fun getAllFormations(): LiveData<List<FormationEntity>>
 
@@ -53,4 +59,16 @@ interface ProjectDatabaseDao {
 
     @Query("DELETE FROM formation_table")
     fun clearFormations()
+
+    @Query("SELECT projectId FROM formation_table WHERE formationId =:key")
+    fun getFormationOwner(key: Long): Long?
+
+    @Query("SELECT * FROM position_table WHERE formationId = :formationKey ORDER BY positionId DESC")
+    fun getFormationPositions(formationKey: Long): LiveData<List<PositionEntity>>
+
+    @Query("SELECT * FROM position_table WHERE formationId = :formationKey ORDER BY positionId DESC")
+    fun getFormationPositionsList(formationKey: Long): List<PositionEntity>
+
+    @Query("DELETE FROM position_table WHERE formationId = :formationKey")
+    fun clearPositions(formationKey: Long)
 }

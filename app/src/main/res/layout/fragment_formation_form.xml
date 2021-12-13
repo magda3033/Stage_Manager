@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="formationFormViewModel"
+            type="com.example.stagemanager.form.formationform.FormationFormViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        tools:context=".form.formationform.FormationFormFragment">
+
+        <TextView
+            android:id="@+id/formation_form_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/formation_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/input_formation_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/formation"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:text="@={formationFormViewModel.formationName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/formation_form_name_text" />
+
+        <TextView
+            android:id="@+id/formation_actors_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/actors"
+            app:layout_constraintEnd_toStartOf="@+id/actor_pool"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_formation_name" />
+
+        <TextView
+            android:id="@+id/formation_actors_count_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/_0"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/actor_pool"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/formation_actors_label" />
+
+        <RelativeLayout
+            android:id="@+id/editor_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/teal_700"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/button_save_formation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/formation_actors_count_number">
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/actor_pool"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:background="@color/design_default_color_error"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/formation_actors_count_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_formation_name" />
+
+        <Button
+            android:id="@+id/button_save_formation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:onClick="@{() -> formationFormViewModel.onSaveProject()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

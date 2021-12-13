@@ -6,10 +6,13 @@
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/drawable/share.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/activity_main_fragment.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/drag_actor.xml" value="0.4" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/formation_entity_view.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_activity.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_blank.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_drag_and_drop.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_formation_form.xml" value="0.2" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_formation_list.xml" value="0.2" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_group_list.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_project_detail.xml" value="0.264" />
@@ -17,6 +20,7 @@
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_project_form.xml" value="0.264" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_project_info_tabs.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_project_list.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/fragment_project_notes.xml" value="0.3585598824393828" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/project_entity_view.xml" value="0.536" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/project_form_fragment.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/bm44273/AndroidStudioProjects/StageManager/app/src/main/res/layout/text_item_view.xml" value="0.22509057971014493" />
