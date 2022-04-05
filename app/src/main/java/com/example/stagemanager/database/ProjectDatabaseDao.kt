@@ -22,13 +22,22 @@ interface ProjectDatabaseDao {
     fun getNewest(): ProjectEntity?
 
     @Query("DELETE FROM project_table")
-    fun clear()
+    fun clearAllProjects()
 
     @Delete
     fun deleteProject(project: ProjectEntity)
 
     @Query("DELETE FROM project_table WHERE projectId = :key")
-    fun deleteById(key: Long)
+    fun deleteProjectById(key: Long)
+
+    @Query("DELETE FROM formation_table WHERE formationId = :key")
+    fun deleteFormationById(key: Long)
+
+    @Query("DELETE FROM formation_table WHERE projectId = :key")
+    fun deleteAllProjectFormations(key: Long)
+
+    @Query("DELETE FROM position_table WHERE formationId = :key")
+    fun deleteAllFormationPositions(key: Long)
 
     @Query("SELECT * FROM project_table ORDER BY projectId DESC")
     fun getAllProjects(): LiveData<List<ProjectEntity>>
@@ -38,6 +47,12 @@ interface ProjectDatabaseDao {
 
     @Update
     fun update(formation: FormationEntity)
+
+    @Insert
+    fun insert(position: PositionEntity)
+
+    @Update
+    fun update(position: PositionEntity)
 
     @Query("SELECT * FROM formation_table ORDER BY formationId DESC")
     fun getAllFormations(): LiveData<List<FormationEntity>>
@@ -53,4 +68,19 @@ interface ProjectDatabaseDao {
 
     @Query("DELETE FROM formation_table")
     fun clearFormations()
+
+    @Query("SELECT projectId FROM formation_table WHERE formationId =:key")
+    fun getFormationOwner(key: Long): Long?
+
+    @Query("SELECT * FROM position_table WHERE formationId = :formationKey ORDER BY positionId DESC")
+    fun getFormationPositions(formationKey: Long): LiveData<List<PositionEntity>>
+
+    @Query("SELECT * FROM position_table WHERE formationId = :formationKey ORDER BY positionId DESC")
+    fun getFormationPositionsList(formationKey: Long): List<PositionEntity>
+
+    @Query("DELETE FROM position_table WHERE formationId = :formationKey")
+    fun clearPositions(formationKey: Long)
+
+    @Query("SELECT notes FROM project_table WHERE projectId = :projectKey")
+    fun getNotes(projectKey: Long): String?
 }

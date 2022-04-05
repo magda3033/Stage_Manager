@@ -10,12 +10,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavArgs
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.stagemanager.ActivityFragmentDirections
 import com.example.stagemanager.R
 import com.example.stagemanager.database.ProjectDatabase
 import com.example.stagemanager.databinding.FragmentFormationListBinding
 import com.example.stagemanager.databinding.FragmentProjectDetailBinding
 import com.example.stagemanager.projectdetail.ProjectInfoTabsFragmentArgs
+import com.example.stagemanager.projectdetail.ProjectInfoTabsFragmentDirections
 
 
 class FormationListFragment(val projectKey: Long) : Fragment() {
@@ -44,7 +47,19 @@ class FormationListFragment(val projectKey: Long) : Fragment() {
         binding.formationListViewModel = formationListViewModel
 
         val adapter = FormationEntityAdapter(FormationEntityListener {
-            formationId -> Toast.makeText(context, "Clicked formation: $formationId", Toast.LENGTH_SHORT).show()
+            formationId ->
+//            Toast.makeText(context, "Clicked formation: $formationId", Toast.LENGTH_SHORT).show()
+            formationListViewModel.onFormationEntityClicked(formationId)
+        })
+
+        formationListViewModel.navigateToFormationForm.observe(viewLifecycleOwner, Observer {
+                formation ->
+            formation?.let{
+                this.findNavController().navigate(
+                    ProjectInfoTabsFragmentDirections
+                    .actionProjectInfoTabsFragmentToFormationFormFragment(formation, projectKey))
+                formationListViewModel.onFormationEntityDetailNavigated()
+            }
         })
 
         binding.formationList.adapter = adapter

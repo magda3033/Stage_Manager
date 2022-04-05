@@ -10,4 +10,11 @@
     <string name="actors">Actors</string>
     <string name="formations">Formations</string>
     <string name="formation">Formation</string>
+    <string name="formation_name">Formation Name</string>
+    <string name="_0">0</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="delete_project">Delete project</string>
+    <string name="add_formation">Add Formation</string>
+    <string name="create">Create</string>
 </resources>

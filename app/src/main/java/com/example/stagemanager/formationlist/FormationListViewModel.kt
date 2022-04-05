@@ -2,6 +2,7 @@ package com.example.stagemanager.formationlist
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.stagehelper.formatFormation
 import com.example.stagemanager.database.FormationEntity
@@ -25,13 +26,29 @@ class FormationListViewModel(
         formatFormation(formation, application.resources)
     }
 
+    private val _navigateToFormationForm = MutableLiveData<Long?>()
+
+    val navigateToFormationForm
+        get() = _navigateToFormationForm
+
+    fun onFormationEntityClicked(id: Long) {
+        _navigateToFormationForm.value = id
+    }
+
+    fun onFormationEntityDetailNavigated() {
+        _navigateToFormationForm.value = null
+    }
+
     fun onCreateNewFormation() {
+        var newId: Long
         uiScope.launch {
 
             val newFormation = FormationEntity(projectId = projectKey)
-
+            newId = newFormation.formationId
             insert(newFormation)
+            _navigateToFormationForm.value = newId
         }
+
     }
 
     private suspend fun insert(formation: FormationEntity){

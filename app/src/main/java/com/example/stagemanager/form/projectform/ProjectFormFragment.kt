@@ -74,7 +74,7 @@ class ProjectFormFragment : Fragment() {
 
         binding.inputDeadline.setOnDateChangeListener {
                 view, year, month, day ->
-            var date = LocalDate.of(year, month + 1, day)
+            val date = LocalDate.of(year, month + 1, day)
             projectFormViewModel.deadline.value = date
         }
 //
