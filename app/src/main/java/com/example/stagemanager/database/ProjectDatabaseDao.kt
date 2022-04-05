@@ -22,13 +22,22 @@ interface ProjectDatabaseDao {
     fun getNewest(): ProjectEntity?
 
     @Query("DELETE FROM project_table")
-    fun clear()
+    fun clearAllProjects()
 
     @Delete
     fun deleteProject(project: ProjectEntity)
 
     @Query("DELETE FROM project_table WHERE projectId = :key")
-    fun deleteById(key: Long)
+    fun deleteProjectById(key: Long)
+
+    @Query("DELETE FROM formation_table WHERE formationId = :key")
+    fun deleteFormationById(key: Long)
+
+    @Query("DELETE FROM formation_table WHERE projectId = :key")
+    fun deleteAllProjectFormations(key: Long)
+
+    @Query("DELETE FROM position_table WHERE formationId = :key")
+    fun deleteAllFormationPositions(key: Long)
 
     @Query("SELECT * FROM project_table ORDER BY projectId DESC")
     fun getAllProjects(): LiveData<List<ProjectEntity>>
@@ -71,4 +80,7 @@ interface ProjectDatabaseDao {
 
     @Query("DELETE FROM position_table WHERE formationId = :formationKey")
     fun clearPositions(formationKey: Long)
+
+    @Query("SELECT notes FROM project_table WHERE projectId = :projectKey")
+    fun getNotes(projectKey: Long): String?
 }

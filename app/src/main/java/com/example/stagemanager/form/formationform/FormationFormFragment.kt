@@ -53,7 +53,7 @@ class FormationFormFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_formation_form, container, false)
@@ -101,22 +101,16 @@ class FormationFormFragment : Fragment() {
     private fun placeActors() {
         val viewModelJob = Job()
         val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-//        Log.i("FormationFormFragment", "TESSSSTTT")
         var act : List<PositionEntity>? =null
         uiScope.launch {
             withContext(Dispatchers.IO){
                 act = dataSource.getFormationPositionsList(formationId)
-                Log.i("FormationFormFragment", "TESSSSTTT ${act?.size}")
-
             }
             act?.forEach{
                 val actor = createNewActor()
                 actor.setXY(it.x, it.y)
-                Log.i("FormationFormFragment", "it: ${it.x}/${it.y}")
             }
-
         }
-
     }
 
     private fun getActorsPositions() {
@@ -132,10 +126,10 @@ class FormationFormFragment : Fragment() {
     }
 
 
-    fun createNewActor(): View {
+    private fun createNewActor(): View {
         val actor = View(context)
 
-        val params = LayoutParams(150, 150)
+        val params = LayoutParams(100, 100)
 
         actor.layoutParams = params
 

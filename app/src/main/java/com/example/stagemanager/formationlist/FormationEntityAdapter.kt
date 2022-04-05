@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stagemanager.database.FormationEntity
 import com.example.stagemanager.databinding.FormationEntityViewBinding
 
-class FormationEntityAdapter(val clickListener: FormationEntityListener): ListAdapter<FormationEntity, FormationEntityAdapter.ViewHolder>(
+class FormationEntityAdapter(private val clickListener: FormationEntityListener): ListAdapter<FormationEntity, FormationEntityAdapter.ViewHolder>(
     FormationEntityDiffCallback()
 ) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
-//        val item = getItem(position)
         holder.bind(getItem(position)!!, clickListener)
 
     }

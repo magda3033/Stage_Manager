@@ -20,7 +20,11 @@
         </action>
         <action
             android:id="@+id/action_activityFragment_to_projectInfoTabsFragment"
-            app:destination="@id/projectInfoTabsFragment" />
+            app:destination="@id/projectInfoTabsFragment" >
+            <argument
+                android:name="navigatingFromFormationForm"
+                android:defaultValue="0" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/projectFormFragment"
@@ -40,7 +44,11 @@
             app:destination="@id/projectInfoTabsFragment"
             app:launchSingleTop="false"
             app:popUpTo="@id/projectInfoTabsFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true">
+            <argument
+                android:name="navigatingFromFormationForm"
+                android:defaultValue="0" />
+        </action>
         <argument
             android:name="deleteAfter"
             app:argType="boolean"
@@ -58,6 +66,9 @@
         <argument
             android:name="projectEntityId"
             app:argType="long" />
+        <argument
+            android:name="navigatingFromFormationForm"
+            app:argType="integer" />
         <action
             android:id="@+id/action_projectInfoTabsFragment_to_activityFragment"
             app:destination="@id/activityFragment"
@@ -88,7 +99,11 @@
             app:destination="@id/projectInfoTabsFragment"
             app:launchSingleTop="false"
             app:popUpTo="@id/projectInfoTabsFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true">
+            <argument
+                android:name="navigatingFromFormationForm"
+                android:defaultValue="1" />
+        </action>
         <argument
             android:name="formationId"
             app:argType="long" />

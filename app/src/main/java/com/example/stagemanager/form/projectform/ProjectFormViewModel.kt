@@ -2,10 +2,8 @@ package com.example.stagemanager.form.projectform
 
 import android.os.Build
 import android.util.Log
-import android.widget.CalendarView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.stagemanager.database.ProjectDatabaseDao
@@ -118,7 +116,7 @@ class ProjectFormViewModel(
         Log.i("ProjectFormViewModel", "Deleting ${projectId} ${projectName.value}")
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                database.deleteById(projectId)
+                database.deleteProjectById(projectId)
             }
         }
     }

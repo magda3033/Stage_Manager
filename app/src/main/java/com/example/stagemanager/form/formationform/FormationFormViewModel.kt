@@ -1,18 +1,13 @@
 package com.example.stagemanager.form.formationform
 
 import android.app.Application
-import android.graphics.Color
-import android.view.View
-import android.widget.LinearLayout
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.stagemanager.database.FormationEntity
 import com.example.stagemanager.database.PositionEntity
 import com.example.stagemanager.database.ProjectDatabaseDao
-import com.example.stagemanager.database.ProjectEntity
 import kotlinx.coroutines.*
-import java.time.LocalDate
 
 class FormationFormViewModel(
     val database: ProjectDatabaseDao,
@@ -64,4 +59,14 @@ class FormationFormViewModel(
         }
     }
 
+    fun onDeleteFormation() {
+        Log.i("FormationFormViewModel", "Deleting formation $formationKey")
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                database.deleteAllFormationPositions(formationKey)
+                database.deleteFormationById(formationKey)
+            }
+        }
+        _navigateToFormationList.value = true
+    }
 }

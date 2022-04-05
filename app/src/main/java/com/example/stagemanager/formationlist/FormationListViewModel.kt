@@ -40,12 +40,15 @@ class FormationListViewModel(
     }
 
     fun onCreateNewFormation() {
+        var newId: Long
         uiScope.launch {
 
             val newFormation = FormationEntity(projectId = projectKey)
-
+            newId = newFormation.formationId
             insert(newFormation)
+            _navigateToFormationForm.value = newId
         }
+
     }
 
     private suspend fun insert(formation: FormationEntity){

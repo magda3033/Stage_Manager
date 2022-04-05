@@ -86,7 +86,7 @@ class ProjectListViewModel(
 
     private suspend fun clear() {
         withContext(Dispatchers.IO) {
-            database.clear()
+            database.clearAllProjects()
         }
     }
 

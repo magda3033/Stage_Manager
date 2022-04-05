@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
-import com.example.stagehelper.MyPagerAdapter
 import com.example.stagemanager.databinding.FragmentActivityMainBinding
-import com.example.stagemanager.mainview.grouplist.GroupListFragment
 import com.example.stagemanager.mainview.projectlist.ProjectListFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/actors"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/actor_pool"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_formation_name" />
@@ -56,6 +57,7 @@
             android:minHeight="48dp"
             android:text="@string/_0"
             android:textSize="20sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/actor_pool"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/formation_actors_label" />
@@ -64,6 +66,8 @@
             android:id="@+id/editor_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/teal_700"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/button_save_formation"
@@ -89,8 +93,19 @@
             android:id="@+id/button_save_formation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/save"
             android:onClick="@{() -> formationFormViewModel.onSaveProject()}"
+            android:text="@string/save"
+            app:layout_constraintBottom_toTopOf="@+id/button_delete_formation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button_delete_formation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:onClick="@{() -> formationFormViewModel.onDeleteFormation()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

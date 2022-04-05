@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.stagemanager.database.ProjectDatabaseDao
 import com.example.stagemanager.database.ProjectEntity
+import kotlinx.coroutines.*
 
 class ProjectDetailViewModel(
         private val projectEntityKey: Long = 0L,
@@ -41,6 +42,23 @@ class ProjectDetailViewModel(
     }
 
     fun onClose() {
+        _navigateToProjectList.value = true
+    }
+
+    fun onDeleteProject() {
+        Log.i("ProjectDetailViewModel", "Deleting project $projectEntityKey")
+        val viewModelJob = Job()
+        val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                val formations = database.getProjectFormations(projectEntityKey)
+                formations.value?.forEach { form ->
+                    database.deleteAllFormationPositions(form.formationId)
+                }
+                database.deleteAllProjectFormations(projectEntityKey)
+                database.deleteProjectById(projectEntityKey)
+            }
+        }
         _navigateToProjectList.value = true
     }
 
